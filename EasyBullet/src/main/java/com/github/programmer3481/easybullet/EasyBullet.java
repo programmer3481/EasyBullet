@@ -115,6 +115,15 @@ public class EasyBullet {
         objectList.put(id, created);
     }
 
+    public void createStaticMesh(Vector3[] mesh, Vector3 pos, String id) {
+        btTriangleMesh triMesh = new btTriangleMesh();
+        for (int i = 0; i < mesh.length / 3; i++) {
+            triMesh.addTriangle(mesh[i], mesh[i+1], mesh[i+2]);
+        }
+        RigidBody created = new RigidBody(new btBvhTriangleMeshShape(triMesh, true), 0.0f, pos);
+        objectList.put(id, created);
+    }
+
     public void addRigidBody(String id) {
         objectList.get(id).add(world);
     }

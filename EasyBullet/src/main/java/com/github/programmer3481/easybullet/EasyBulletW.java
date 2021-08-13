@@ -29,6 +29,14 @@ public class EasyBulletW {
         bullet.createCone(r, h, mass, toGdx(pos), id);
     }
 
+    public void createStaticMesh(Vector3f[] mesh, Vector3f pos, String id) {
+        com.badlogic.gdx.math.Vector3[] converted = new com.badlogic.gdx.math.Vector3[mesh.length];
+        for (int i = 0; i < mesh.length; i++) {
+            converted[i] = toGdx(mesh[i]);
+        }
+        bullet.createStaticMesh(converted, toGdx(pos), id);
+    }
+
     public void addRigidBody(String id) {
         bullet.addRigidBody(id);
     }
